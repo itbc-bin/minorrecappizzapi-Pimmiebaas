@@ -3,9 +3,9 @@ from flask import Flask, jsonify, request
 app = Flask(__name__)
 
 pizzaDB = [
-    {'name':'magarita'},
-    {'name':'hawaii'},
-    {'name': 'salami'}
+    {'name':'magarita','desc':'normie'},
+    {'name':'hawaii', 'desc':'lit'},
+    {'name': 'salami', 'desc':'salami more like sla me'}
 ]
 
 @app.route("/<string:name>", methods=['GET'])
