@@ -10,10 +10,20 @@ pizzaDB = [
 
 @app.route("/", methods= ['POST'])
 def addOnePizza():
-    pizza = {'name' : request.json['name']}
-    pizzaDB.append(pizza)
-    return jsonify({'pizzaDB': pizzaDB})
+    pizzanaam = request.json["name"]
+    ingr = request.json["ingr"]
+    for pizza in pizzaDB:
+        if pizza["name"] == pizzanaam:
+            for pizza2 in ingr:
+                if pizza2 not in pizza["ingr"]:
+                    pizza["ingr"].append(pizza2)
 
+            return jsonify({"pizzaDB": pizzaDB})
+
+
+    pizza = {"name":pizzanaam,"ingr":ingr}
+    pizzaDB.append(pizza)
+return jsonify({"pizzaDB" : pizzaDB})
 
 
 """
